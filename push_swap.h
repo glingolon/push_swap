@@ -36,5 +36,11 @@ void	remove_back(t_stack *s);
 void	add_front(t_stack *s, t_element *e);
 void	remove_front(t_stack *s);
 void	swap_stack(t_stack *st);
-//void	swap_stacks(t_stack *a, t_stack *b);
+void	swap_stacks(t_stack *a, t_stack *b);
+void	push_stack_a(t_stack *a, t_stack *b);
+void	push_stack_b(t_stack *a, t_stack *b);
+void	rotate_stack(t_stack *st);
+//void	rotate_stacks(t_stack *a, t_stack *b);
+//void	rev_rotate_stack(t_stack *st);
+//void	rev_rotate_stacks(t_stack *a, t_stack *b);
 #endif

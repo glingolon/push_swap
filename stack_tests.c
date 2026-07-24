@@ -14,18 +14,32 @@
 #include <stdlib.h>
 #include <string.h>
 #define SWAP ;
-//#define ROTATE ;
-//#define REV_ROTATE ; 
+#define SWAPBOTH ;
+#define ROTATE ;
+//#define ROTATEBOTH
+//#define REV_ROTATE ;
+//#define REV_ROTATEBOTH 
 int main()
 {
 	t_stack a, b;
+	int	init[5] = {4, 2, 0, 6, 9};
+	int	i;
+	
 	a.head = NULL;
 	b.head = NULL;
 	a.tail = NULL;
 	b.tail = NULL;
 	a.size = 0;
 	b.size = 0;
-	
+
+	for (i = 0; i < 5; i++)
+	{
+		t_element *new_elem = malloc(sizeof(t_element));
+		if (!new_elem)
+			break;
+		new_elem->val = init[i];
+		add_back(&a, new_elem);
+	}
 	while (1)
 	{
 		printf("\nstack A: ");
@@ -67,16 +81,22 @@ int main()
 		else if (!strncmp(command, "swap", 4))
 		{
 			char stack_name;
-			scanf("%c", &stack_name);
+			scanf(" %c", &stack_name);
 			t_stack *stack = (stack_name == 'a') ? &a : &b;
 			swap_stack(stack);
 		}
 #endif
+
+#ifdef SWAPBOTH
+		else if(!strncmp(command, "swapboth", 8))
+			swap_stacks(&a, &b);	
+#endif
+
 #ifdef ROTATE
 		else if (!strncmp(command, "rot", 3))
 		{
 			char stack_name;
-			scanf("%c", &stack_name);
+			scanf(" %c", &stack_name);
 			t_stack *stack = (stack_name == 'a') ? &a : &b;
 			rotate_stack(stack);
 		}
@@ -85,7 +105,7 @@ int main()
 		else if (!strncmp(command, "revrot", 3))
 		{
 			char stack_name;
-			scanf("%c", &stack_name);
+			scanf(" %c", &stack_name);
 			t_stack *stack = (stack_name == 'a') ? &a : &b;
 			rev_rotate_stack(stack);
 		}
