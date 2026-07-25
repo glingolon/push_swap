@@ -6,25 +6,19 @@
 /*   By: mwisniew <mwisniew@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 14:16:47 by mwisniew          #+#    #+#             */
-/*   Updated: 2026/07/23 18:38:12 by nfil             ###   ########.fr       */
+/*   Updated: 2026/07/25 20:23:21 by nfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define SWAP ;
-#define SWAPBOTH ;
-#define ROTATE ;
-//#define ROTATEBOTH
-//#define REV_ROTATE ;
-//#define REV_ROTATEBOTH 
 int main()
 {
 	t_stack a, b;
 	int	init[5] = {4, 2, 0, 6, 9};
 	int	i;
-	
+
 	a.head = NULL;
 	b.head = NULL;
 	a.tail = NULL;
@@ -34,11 +28,11 @@ int main()
 
 	for (i = 0; i < 5; i++)
 	{
-		t_element *new_elem = malloc(sizeof(t_element));
-		if (!new_elem)
-			break;
-		new_elem->val = init[i];
-		add_back(&a, new_elem);
+		t_element *new = malloc(sizeof(t_element));
+		if (!new)
+			break ;
+		new->val = init[i];
+		add_back(&a, new);
 	}
 	while (1)
 	{
@@ -54,6 +48,13 @@ int main()
 		printf("\tAdd back: addb <stack> <value>\n");
 		printf("\tRemove front: remf <stack>\n");
 		printf("\tRemove back: remb <stack>\n");
+		printf("\tSwap stack: swap <stack>\n");
+		printf("\tSwap both: swapboth\n");
+		printf("\tPush stack: push <stack>\n");
+		printf("\tRotate stack: rot <stack>\n");
+		printf("\tRotate both: rotboth\n");
+		printf("\tReverse rotate stack: revrot <stack>\n");
+		printf("\tReverse rotate both: revrotboth\n");
 		char command[100];
 		scanf("%s", command);
 
@@ -75,9 +76,9 @@ int main()
 			t_stack *stack = (stack_name == 'a') ? &a : &b;
 			if (command[3] == 'f') remove_front(stack);
 			else remove_back(stack);
-
 		}
-#ifdef SWAP
+		else if(!strncmp(command, "swapboth", 8))
+			swap_stacks(&a, &b);
 		else if (!strncmp(command, "swap", 4))
 		{
 			char stack_name;
@@ -85,14 +86,17 @@ int main()
 			t_stack *stack = (stack_name == 'a') ? &a : &b;
 			swap_stack(stack);
 		}
-#endif
-
-#ifdef SWAPBOTH
-		else if(!strncmp(command, "swapboth", 8))
-			swap_stacks(&a, &b);	
-#endif
-
-#ifdef ROTATE
+		else if(!strncmp(command, "push", 4))
+		{
+			char stack_name;
+			scanf(" %c", &stack_name);
+			if (stack_name == 'a')
+				push_stack_a(&a, &b);
+			else
+				push_stack_b(&a, &b);
+		}
+		else if (!strncmp(command, "rotboth", 7))
+			rotate_stacks(&a, &b);
 		else if (!strncmp(command, "rot", 3))
 		{
 			char stack_name;
@@ -100,16 +104,15 @@ int main()
 			t_stack *stack = (stack_name == 'a') ? &a : &b;
 			rotate_stack(stack);
 		}
-#endif
-#ifdef REV_ROTATE
-		else if (!strncmp(command, "revrot", 3))
+		else if (!strncmp(command, "revrotboth", 10))
+			rev_rotate_stacks(&a, &b);
+		else if (!strncmp(command, "revrot", 6))
 		{
 			char stack_name;
 			scanf(" %c", &stack_name);
 			t_stack *stack = (stack_name == 'a') ? &a : &b;
 			rev_rotate_stack(stack);
 		}
-#endif
 		//printf("\x1B[2J\n"); 
 		system("clear");
 	}

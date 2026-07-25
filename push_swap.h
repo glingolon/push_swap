@@ -6,7 +6,7 @@
 /*   By: mwisniew <mwisniew@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 22:39:48 by mwisniew          #+#    #+#             */
-/*   Updated: 2026/07/23 18:39:25 by nfil             ###   ########.fr       */
+/*   Updated: 2026/07/25 20:17:51 by nfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	swap_stacks(t_stack *a, t_stack *b);
 void	push_stack_a(t_stack *a, t_stack *b);
 void	push_stack_b(t_stack *a, t_stack *b);
 void	rotate_stack(t_stack *st);
-//void	rotate_stacks(t_stack *a, t_stack *b);
-//void	rev_rotate_stack(t_stack *st);
-//void	rev_rotate_stacks(t_stack *a, t_stack *b);
+void	rotate_stacks(t_stack *a, t_stack *b);
+void	rev_rotate_stack(t_stack *st);
+void	rev_rotate_stacks(t_stack *a, t_stack *b);
 #endif
