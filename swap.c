@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwisniew <mwisniew@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/29 17:56:33 by mwisniew          #+#    #+#             */
-/*   Updated: 2026/06/29 17:56:34 by mwisniew         ###   ########.fr       */
+/*   Created: 2026/07/28 00:08:45 by mwisniew          #+#    #+#             */
+/*   Updated: 2026/07/28 00:11:50 by mwisniew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+void	swap_stack(t_stack *st)
 {
-	size_t	i;
+	int	temp;
 
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (st->size < 2)
+		return ;
+	temp = st->tail->prev->val;
+	st->tail->prev->val = st->tail->val;
+	st->tail->val = temp;
+}
+
+void	swap_stacks(t_stack *a, t_stack *b)
+{
+	swap_stack(a);
+	swap_stack(b);
 }

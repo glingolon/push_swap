@@ -6,7 +6,7 @@
 /*   By: mwisniew <mwisniew@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:25:20 by mwisniew          #+#    #+#             */
-/*   Updated: 2026/07/23 14:59:56 by mwisniew         ###   ########.fr       */
+/*   Updated: 2026/07/31 19:45:28 by mwisniew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -87,4 +87,11 @@ void	remove_front(t_stack *s)
 	s->head = s->head->next;
 	s->size--;
 	free(temp);
+}
+
+void	init_stack(t_stack *s)
+{
+	s->head = NULL;
+	s->tail = NULL;
+	s->size = 0;
 }
