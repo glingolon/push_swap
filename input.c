@@ -46,7 +46,7 @@ void	fill_input(t_input *input, int argc, char *argv[])
 	else if (remaining > 1)
 		fill_from_args(input, argc, argv, start);
 }
-void	fill_input_split (t_input *input, char *str)
+void	fill_input_split(t_input *input, char *str)
 {
 	char	**splat;
 	int	count;
@@ -62,7 +62,7 @@ void	fill_input_split (t_input *input, char *str)
 		return ;
 	j = -1;
 	while (++j)
-		input->init_arr[j] = ft_atoi(split[j]);	
+		input->init_arr[j] = ft_atoi(splat[j]);	
 	//free i malloc jak sie wyjebie
 }
 void	fill_from_args(t_input *input, int argc, char *argv[], int start)
@@ -77,5 +77,5 @@ void	fill_from_args(t_input *input, int argc, char *argv[], int start)
 		return ;
 	j = -1;
 	while (++j < count)
-		input->init_arr[j] == ft_atoi(argv[start + j]);
+		input->init_arr[j] = ft_atoi(argv[start + j]);
 }

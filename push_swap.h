@@ -55,6 +55,9 @@ void	rev_rotate_stacks(t_stack *a, t_stack *b);
 void	simple_sort(t_stack *a, t_stack *b);
 void	medium_sort(t_stack *a, t_stack *b);
 void	init_stack(t_stack *s);
+int	flags_input(t_input *input, int argc, char *argv[]);
 void	fill_input(t_input *input, int argc, char *argv[]);
+void	fill_input_split(t_input *input, char *str);
+void	fill_from_args(t_input *input, int argc, char *argv[], int start);
 void	small_input(t_stack *a, t_stack *b);
 #endif
