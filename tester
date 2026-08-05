@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# $1 = number of arguments per test
+# $2 = amount of tests to run
+
+for i in $(seq 1 $2); do
+    echo "Test $i/$2"
+    ./permutation $1 $i > shuffle.txt
+    ./simple $(cat shuffle.txt) | ./checker_linux $(cat shuffle.txt)
+done

@@ -6,7 +6,7 @@
 /*   By: mwisniew <mwisniew@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 22:39:48 by mwisniew          #+#    #+#             */
-/*   Updated: 2026/07/31 19:35:50 by mwisniew         ###   ########.fr       */
+/*   Updated: 2026/08/05 13:41:16 by mwisniew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,14 @@ void	rev_rotate_stacks(t_stack *a, t_stack *b);
 void	simple_sort(t_stack *a, t_stack *b);
 void	medium_sort(t_stack *a, t_stack *b);
 void	init_stack(t_stack *s);
-int	flags_input(t_input *input, int argc, char *argv[]);
+void	small_input(t_stack *a, t_stack *b);
+int		flags_input(t_input *input, int argc, char *argv[]);
 void	fill_input(t_input *input, int argc, char *argv[]);
 void	fill_input_split(t_input *input, char *str);
 void	fill_from_args(t_input *input, int argc, char *argv[], int start);
-void	small_input(t_stack *a, t_stack *b);
+void	complex_sort(t_stack *a, t_stack *b, int *arr);
+int		*fill_in_lis(int *arr, int n);
+int		get_max_bucket(int *bucket, int n);
+int		to_find(int *bucket, int left, int right, int n);
+void	push_buckets_to_b(t_stack *a, t_stack *b, int *bucket, int n);
 #endif

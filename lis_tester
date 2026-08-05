@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# $1 = number of arguments per test
+# $2 = amount of tests to run
+
+for i in $(seq 1 $2); do
+    echo "Test $i/$2"
+    ./permutation $1 $i > shuffle.txt
+	./lis $(cat shuffle.txt) > lis.txt
+	./check_ascending $(cat lis.txt)
+done
